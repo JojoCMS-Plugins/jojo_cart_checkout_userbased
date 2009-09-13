@@ -1,0 +1,1 @@
+A checkout page that asks for the customer's shipping and billing details.
