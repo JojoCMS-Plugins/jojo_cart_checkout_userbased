@@ -36,7 +36,7 @@
                         {if $address.suburb}{$address.suburb}<br/>{/if}
                         {if $address.city}{$address.city}<br/>{/if}
                         {if $address.state}{$address.state}{/if} {$address.postcode}<br/>
-                        {section name=c loop=$countries}{if !$found && $countries[c].code|strtoupper==$address.country && $countries[c].special==1}{$countries[c].name}{/if}{/section}</br>
+                        {foreach from=$countries item=country}{if !$found && $country.code|strtoupper==$address.country && $country.special==1}{$country.name}{/if}{/foreach}</br>
     {if $address.freight_method == 'forwarding'}
                         <em>Using {$address.freight_company} for freight forwarding</em><br/>
     {/if}
@@ -88,65 +88,65 @@
 
                 <p>
                 <label for="new_firstname">First name</label>
-                <input type="text" size="20" name="new[firstname]" id="new_firstname" value="{$fields.new_firstname}" /> *<br />
+                <input type="text" size="20" name="new[firstname]" id="new_firstname" value="{if $fields.new_firstname}{$fields.new_firstname}{/if}" /> *<br />
     {if $errors.new_firstname}<span class="error">{$errors.new_firstname}</span><br/>{/if}
 
                 <label for="new_lastname">Last name</label>
-                <input type="text" size="20" name="new[lastname]" id="new_lastname" value="{$fields.new_lastname}" /> *<br />
+                <input type="text" size="20" name="new[lastname]" id="new_lastname" value="{if $fields.new_lastname}{$fields.new_lastname}{/if}" /> *<br />
     {if $errors.new_lastname}<span class="error">{$errors.new_lastname}</span><br/>{/if}
 
                 <label for="new_company">Company Name</label>
-                <input type="text" size="30" name="new[company]" id="new_company" value="{$fields.new_company}" /><br />
+                <input type="text" size="30" name="new[company]" id="new_company" value="{if $fields.new_company}{$fields.new_company}{/if}" /><br />
     {if $errors.new_company}<span class="error">{$errors.new_company}</span><br/>{/if}
 
                 <label for="new_email">Email</label>
-                <input type="text" size="30" name="new[email]" id="new_email" value="{$fields.new_email}" /> *<br />
+                <input type="text" size="30" name="new[email]" id="new_email" value="{if $fields.new_email}{$fields.new_email}{/if}" /> *<br />
     {if $errors.new_email}<span class="error">{$errors.new_email}</span><br/>{/if}
 
                 <label for="new_country">Country</label>
                 <select size="1" name="new[country]" id="new_country" onchange="updateCountry($(this).val(), 'new');">
-                {assign var=found value=false}{section name=c loop=$countries}
-                    <option value="{$countries[c].code|strtoupper}"{if !$found && $countries[c].code|strtoupper==$fields.shipping_country} selected="selected"{assign var=found value=true}{/if}>{$countries[c].name}</option>
-                {/section}
+                {assign var=found value=false}{foreach from=$countries item=country}
+                    <option value="{$country.code|strtoupper}"{if !$found && $country.code|strtoupper==$fields.shipping_country} selected="selected"{assign var=found value=true}{/if}>{$country.name}</option>
+                {/foreach}
                 </select> *<br />
     {if $errors.new_country}<span class="error">{$errors.new_country}</span><br/>{/if}
 
                 <label for="new_state">State</label>
-                <input type="text" size="20" name="new[state]" id="new_state" value="{$fields.new_state}" /><br />
+                <input type="text" size="20" name="new[state]" id="new_state" value="{if $fields.new_state}{$fields.new_state}{/if}" /><br />
     {if $errors.new_state}<span class="error">{$errors.new_state}</span><br/>{/if}
 
                 <label for="new_address1">Address 1</label>
-                <input type="text" size="30" name="new[address1]" id="new_address1" value="{$fields.new_address1}" /> *<br />
+                <input type="text" size="30" name="new[address1]" id="new_address1" value="{if $fields.new_address1}{$fields.new_address1}{/if}" /> *<br />
     {if $errors.new_address1}<span class="error">{$errors.new_address1}</span><br/>{/if}
 
                 <label for="new_address2">Address 2</label>
-                <input type="text" size="30" name="new[address2]" id="new_address2" value="{$fields.new_address2}" /><br />
+                <input type="text" size="30" name="new[address2]" id="new_address2" value="{if $fields.new_address2}{$fields.new_address2}{/if}" /><br />
     {if $errors.new_address2}<span class="error">{$errors.new_address2}</span><br/>{/if}
 
                 <label for="new_suburb">Suburb</label>
-                <input type="text" size="20" name="new[suburb]" id="new_suburb" value="{$fields.new_suburb}" /><br />
+                <input type="text" size="20" name="new[suburb]" id="new_suburb" value="{if $fields.new_suburb}{$fields.new_suburb}{/if}" /><br />
     {if $errors.new_suburb}<span class="error">{$errors.new_suburb}</span><br/>{/if}
 
                 <label for="new_city">City</label>
-                <input type="text" size="20" name="new[city]" id="new_city" value="{$fields.new_city}" /> *<br />
+                <input type="text" size="20" name="new[city]" id="new_city" value="{if $fields.new_city}{$fields.new_city}{/if}" /> *<br />
     {if $errors.new_city}<span class="error">{$errors.new_city}</span><br/>{/if}
 
                 <label for="new_postcode">Postcode</label>
-                <input type="text" size="10" name="new[postcode]" id="new_postcode" value="{$fields.new_postcode}" /> *<br />
+                <input type="text" size="10" name="new[postcode]" id="new_postcode" value="{if $fields.new_postcode}{$fields.new_postcode}{/if}" /> *<br />
     {if $errors.new_postcode}<span class="error">{$errors.new_postcode}</span><br/>{/if}
 
                 </p>
     {if $freightoptions}
                 <h4>Shipping Option</h4>
                 <p>
-          {section name=f loop=$freightoptions}
-            {if $freightoptions[f]=='Standard'}
+          {foreach from=$freightoptions item=fo}
+            {if $fo=='Standard'}
                  <input type="radio" name="new[freight_method]" onchange="$('#new_freightforwarding').hide();" id="new_freight_method_standard" value="standard" {if $fields.new_freight_method == 'standard'}checked="checked"{/if}/><label style="margin-left: 10px; width: auto" for="new_freight_method_standard">Your shipping provider</label><br/>
             {/if}
-            {if $freightoptions[f]=='Quote'}
+            {if $fo=='Quote'}
                  <input type="radio" name="new[freight_method]" onchange="$('#new_freightforwarding').hide();" id="new_freight_method_quote" value="quote" {if $fields.new_freight_method == 'quote'}checked="checked"{/if}/><label style="margin-left: 10px; width: auto" for="new_freight_method_quote">Provide me with a freight quote</label><br/>
             {/if}
-            {if $freightoptions[f]=='Forwarder'}
+            {if $fo=='Forwarder'}
                 <input type="radio" name="new[freight_method]" onchange="$('#new_freightforwarding').show();" id="new_freight_method_forwarding" value="forwarding" {if $fields.new_freight_method == 'forwarding'}checked="checked"{/if}/><label style="margin-left: 10px; width: auto" for="new_freight_method_forwarding">Use my freight forwarder</label><br/>
                 </p>
                 <p id="new_freightforwarding" {if $fields.new_freight_method != 'forwarding'}style="display:none"{/if}>
@@ -163,7 +163,7 @@
     {if $errors.new_freight_ordernumber}<span class="error">{$errors.new_freight_ordernumber}</span><br/>{/if}
                 </p>
              {/if}
-          {/section}
+          {/foreach}
      {/if}
                <p>
                     <br style="clear: both"/>
@@ -196,65 +196,65 @@
                 <h3>Shipping Address</h3>
 
                 <label for="shipping_firstname">First name</label>
-                <input type="text" size="20" name="shipping_firstname" id="shipping_firstname" value="{$fields.shipping_firstname}" /> *<br />
+                <input type="text" size="20" name="shipping_firstname" id="shipping_firstname" value="{if $fields.shipping_firstname}{$fields.shipping_firstname}{/if}" /> *<br />
     {if $errors.shipping_firstname}<span class="error">{$errors.shipping_firstname}</span><br/>{/if}
 
                 <label for="shipping_lastname">Last name</label>
-                <input type="text" size="20" name="shipping_lastname" id="shipping_lastname" value="{$fields.shipping_lastname}" /> *<br />
+                <input type="text" size="20" name="shipping_lastname" id="shipping_lastname" value="{if $fields.shipping_lastname}{$fields.shipping_lastname}{/if}" /> *<br />
     {if $errors.shipping_lastname}<span class="error">{$errors.shipping_lastname}</span><br/>{/if}
 
                 <label for="shipping_company">Company Name</label>
-                <input type="text" size="30" name="shipping_company" id="shipping_company" value="{$fields.shipping_company}" /><br />
+                <input type="text" size="30" name="shipping_company" id="shipping_company" value="{if $fields.shipping_company}{$fields.shipping_company}{/if}" /><br />
     {if $errors.shipping_company}<span class="error">{$errors.shipping_company}</span><br/>{/if}
 
                 <label for="shipping_email">Email</label>
-                <input type="text" size="30" name="shipping_email" id="shipping_email" value="{$fields.shipping_email}" /> *<br />
+                <input type="text" size="30" name="shipping_email" id="shipping_email" value="{if $fields.shipping_email}{$fields.shipping_email}{/if}" /> *<br />
     {if $errors.shipping_email}<span class="error">{$errors.shipping_email}</span><br/>{/if}
 
                 <label for="shipping_country">Country</label>
                 <select size="1" name="shipping_country" id="shipping_country" onchange="updateCountry($(this).val(), 'shipping');">
-    {assign var=found value=false}{section name=c loop=$countries}
-                    <option value="{$countries[c].code|strtoupper}"{if !$found && $countries[c].code|strtoupper==$fields.shipping_country } selected="selected"{assign var=found value=true}{/if}>{$countries[c].name}</option>
-    {/section}
+    {assign var=found value=false}{foreach from=$countries item=country}
+                    <option value="{$country.code|strtoupper}"{if !$found && $country.code|strtoupper==$fields.shipping_country } selected="selected"{assign var=found value=true}{/if}>{$country.name}</option>
+    {/foreach}
                 </select> *<br />
     {if $errors.shipping_country}<span class="error">{$errors.shipping_country}</span><br/>{/if}
 
                 <label for="shipping_state">State</label>
-                <input type="text" size="20" name="shipping_state" id="shipping_state" value="{$fields.shipping_state}" /><br />
+                <input type="text" size="20" name="shipping_state" id="shipping_state" value="{if $fields.shipping_state}{$fields.shipping_state}{/if}" /><br />
     {if $errors.shipping_state}<span class="error">{$errors.shipping_state}</span><br/>{/if}
 
                 <label for="shipping_address1">Address 1</label>
-                <input type="text" size="30" name="shipping_address1" id="shipping_address1" value="{$fields.shipping_address1}" /> *<br />
+                <input type="text" size="30" name="shipping_address1" id="shipping_address1" value="{if $fields.shipping_address1}{$fields.shipping_address1}{/if}" /> *<br />
     {if $errors.shipping_address1}<span class="error">{$errors.shipping_address1}</span><br/>{/if}
 
                 <label for="shipping_address2">Address 2</label>
-                <input type="text" size="30" name="shipping_address2" id="shipping_address2" value="{$fields.shipping_address2}" /><br />
+                <input type="text" size="30" name="shipping_address2" id="shipping_address2" value="{if $fields.shipping_address2}{$fields.shipping_address2}{/if}" /><br />
     {if $errors.shipping_address2}<span class="error">{$errors.shipping_address2}</span><br/>{/if}
 
                 <label for="shipping_suburb">Suburb</label>
-                <input type="text" size="20" name="shipping_suburb" id="shipping_suburb" value="{$fields.shipping_suburb}" /><br />
+                <input type="text" size="20" name="shipping_suburb" id="shipping_suburb" value="{if $fields.shipping_suburb}{$fields.shipping_suburb}{/if}" /><br />
     {if $errors.shipping_suburb}<span class="error">{$errors.shipping_suburb}</span><br/>{/if}
 
                 <label for="shipping_city">City</label>
-                <input type="text" size="20" name="shipping_city" id="shipping_city" value="{$fields.shipping_city}" /> *<br />
+                <input type="text" size="20" name="shipping_city" id="shipping_city" value="{if $fields.shipping_city}{$fields.shipping_city}{/if}" /> *<br />
     {if $errors.shipping_city}<span class="error">{$errors.shipping_city}</span><br/>{/if}
 
                 <label for="shipping_postcode">Postcode</label>
-                <input type="text" size="10" name="shipping_postcode" id="shipping_postcode" value="{$fields.shipping_postcode}" /> *<br />
+                <input type="text" size="10" name="shipping_postcode" id="shipping_postcode" value="{if $fields.shipping_postcode}{$fields.shipping_postcode}{/if}" /> *<br />
     {if $errors.shipping_postcode}<span class="error">{$errors.shipping_postcode}</span><br/>{/if}
 
 
     {if $freightoptions}
                 <h4>Shipping Option</h4>
                 <p>
-          {section name=f loop=$freightoptions}
-            {if $freightoptions[f]=='Standard'}
+          {foreach from=$freightoptions item=fo}
+            {if $fo=='Standard'}
                  <input type="radio" name="new[freight_method]" onchange="$('#new_freightforwarding').hide();" id="new_freight_method_standard" value="standard" {if $fields.new_freight_method == 'standard'}checked="checked"{/if}/><label style="margin-left: 10px; width: auto" for="new_freight_method_standard">Your shipping provider</label><br/>
             {/if}
-            {if $freightoptions[f]=='Quote'}
+            {if $fo=='Quote'}
                  <input type="radio" name="new[freight_method]" onchange="$('#new_freightforwarding').hide();" id="new_freight_method_quote" value="quote" {if $fields.new_freight_method == 'quote'}checked="checked"{/if}/><label style="margin-left: 10px; width: auto" for="new_freight_method_quote">Provide me with a freight quote</label><br/>
             {/if}
-            {if $freightoptions[f]=='Forwarder'}
+            {if $fo=='Forwarder'}
                     <input type="radio" name="new[freight_method]" onchange="$('#new_freightforwarding').show();" id="new_freight_method_forwarding" value="forwarding" {if $fields.new_freight_method == 'forwarding'}checked="checked"{/if}/><label style="margin-left: 10px; width: auto" for="new_freight_method_forwarding">Use my freight forwarder</label><br/>
                 </p>
                 <p id="new_freightforwarding" {if $fields.new_freight_method != 'forwarding'}style="display:none"{/if}>
@@ -263,15 +263,15 @@
     {if $errors.new_freight_company}<span class="error">{$errors.new_freight_company}</span><br/>{/if}
 
                     <label for="new_freight_accountno">Account Number</label>
-                    <input type="text" size="20" name="new[freight_accountno]" id="new_freight_accountno" value="{$fields.new_freight_accountno}" /><br />
+                    <input type="text" size="20" name="new[freight_accountno]" id="new_freight_accountno" value="{if $fields.new_freight_accountno}{$fields.new_freight_accountno}{/if}" /><br />
     {if $errors.new_freight_accountno}<span class="error">{$errors.new_freight_accountno}</span><br/>{/if}
 
                     <label for="new_freight_ordernumber">Order Number</label>
-                    <input type="text" size="20" name="new[freight_ordernumber]" id="new_freight_ordernumber" value="{$fields.new_freight_ordernumber}" /><br />
+                    <input type="text" size="20" name="new[freight_ordernumber]" id="new_freight_ordernumber" value="{if $fields.new_freight_ordernumber}{$fields.new_freight_ordernumber}{/if}" /><br />
     {if $errors.new_freight_ordernumber}<span class="error">{$errors.new_freight_ordernumber}</span><br/>{/if}
                 </p>
              {/if}
-          {/section}
+          {/foreach}
      {/if}
 
             </div>
@@ -283,51 +283,51 @@
                 <label for="same_as_shipping">Same as my shipping address</label><br />
 
                 <label for="billing_firstname">First name</label>
-                <input type="text" size="20" name="billing_firstname" id="billing_firstname" value="{$fields.billing_firstname}" /> *<br />
+                <input type="text" size="20" name="billing_firstname" id="billing_firstname" value="{if $fields.billing_firstname}{$fields.billing_firstname}{/if}" /> *<br />
     {if $errors.billing_firstname}<span class="error">{$errors.billing_firstname}</span><br/>{/if}
 
                 <label for="billing_lastname">Last name</label>
-                <input type="text" size="20" name="billing_lastname" id="billing_lastname" value="{$fields.billing_lastname}" /> *<br />
+                <input type="text" size="20" name="billing_lastname" id="billing_lastname" value="{if $fields.billing_lastname}{$fields.billing_lastname}{/if}" /> *<br />
     {if $errors.billing_lastname}<span class="error">{$errors.billing_lastname}</span><br/>{/if}
 
                 <label for="billing_company">Company Name</label>
-                <input type="text" size="30" name="billing_company" id="billing_company" value="{$fields.billing_company}" /><br />
+                <input type="text" size="30" name="billing_company" id="billing_company" value="{if $fields.billing_company}{$fields.billing_company}{/if}" /><br />
     {if $errors.billing_company}<span class="error">{$errors.billing_company}</span><br/>{/if}
 
                 <label for="billing_email">Email</label>
-                <input type="text" size="30" name="billing_email" id="billing_email" value="{$fields.billing_email}" /> *<br />
+                <input type="text" size="30" name="billing_email" id="billing_email" value="{if $fields.billing_email}{$fields.billing_email}{/if}" /> *<br />
     {if $errors.billing_email}<span class="error">{$errors.billing_email}</span><br/>{/if}
 
                 <label for="billing_country">Country</label>
                 <select size="1" name="billing_country" id="billing_country" onchange="updateCountry($(this).val(), 'billing');">
-    {assign var=found value=false}{section name=c loop=$countries}
-                    <option value="{$countries[c].code|strtoupper}"{if !$found && $countries[c].code|strtoupper==$fields.billing_country} selected="selected"{assign var=found value=true}{/if}>{$countries[c].name}</option>
-    {/section}
+    {assign var=found value=false}{foreach from=$countries item=country}
+                    <option value="{$country.code|strtoupper}"{if !$found && $country.code|strtoupper==$fields.billing_country} selected="selected"{assign var=found value=true}{/if}>{$country.name}</option>
+    {/foreach}
                 </select> *<br />
     {if $errors.billing_country}<span class="error">{$errors.billing_country}</span><br/>{/if}
 
                 <label for="billing_state">State</label>
-                <input type="text" size="20" name="billing_state" id="billing_state" value="{$fields.billing_state}" /><br />
+                <input type="text" size="20" name="billing_state" id="billing_state" value="{if $fields.billing_state}{$fields.billing_state}{/if}" /><br />
     {if $errors.billing_state}<span class="error">{$errors.billing_state}</span><br/>{/if}
 
                 <label for="billing_address1">Address 1</label>
-                <input type="text" size="30" name="billing_address1" id="billing_address1" value="{$fields.billing_address1}" /> *<br />
+                <input type="text" size="30" name="billing_address1" id="billing_address1" value="{if $fields.billing_address1}{$fields.billing_address1}{/if}" /> *<br />
     {if $errors.billing_address1}<span class="error">{$errors.billing_address1}</span><br/>{/if}
 
                 <label for="billing_address2">Address 2</label>
-                <input type="text" size="30" name="billing_address2" id="billing_address2" value="{$fields.billing_address2}" /><br />
+                <input type="text" size="30" name="billing_address2" id="billing_address2" value="{if $fields.billing_address2}{$fields.billing_address2}{/if}" /><br />
     {if $errors.billing_address2}<span class="error">{$errors.billing_address2}</span><br/>{/if}
 
                 <label for="billing_suburb">Suburb</label>
-                <input type="text" size="20" name="billing_suburb" id="billing_suburb" value="{$fields.billing_suburb}" /><br />
+                <input type="text" size="20" name="billing_suburb" id="billing_suburb" value="{if $fields.billing_suburb}{$fields.billing_suburb}{/if}" /><br />
     {if $errors.billing_suburb}<span class="error">{$errors.billing_suburb}</span><br/>{/if}
 
                 <label for="billing_city">City</label>
-                <input type="text" size="20" name="billing_city" id="billing_city" value="{$fields.billing_city}" /> *<br />
+                <input type="text" size="20" name="billing_city" id="billing_city" value="{if $fields.billing_city}{$fields.billing_city}{/if}" /> *<br />
     {if $errors.billing_city}<span class="error">{$errors.billing_city}</span><br/>{/if}
 
                 <label for="billing_postcode">Postcode</label>
-                <input type="text" size="10" name="billing_postcode" id="billing_postcode" value="{$fields.billing_postcode}" /> *<br />
+                <input type="text" size="10" name="billing_postcode" id="billing_postcode" value="{if $fields.billing_postcode}{$fields.billing_postcode}{/if}" /> *<br />
     {if $errors.billing_postcode}<span class="error">{$errors.billing_postcode}</span><br/>{/if}
 
     {jojoHook hook="jojo_cart_extra_fields"}
