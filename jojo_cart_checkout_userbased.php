@@ -145,6 +145,10 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
                 $errors[] = 'Please enter a valid email address.';
             }
 
+            $name= $new['firstname'].' '.$new['lastname'];
+            if(strlen($name)>35) $errors[] = 'Please a firstname/lastname combination with max 35 characters please';
+
+
             if (count($errors)) {
                 /* There were errors, let the user fix them */
                 foreach ($new as $k => $v) {
@@ -186,7 +190,7 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
             $content['content']    = $smarty->fetch('jojo_cart_checkout_userbased.tpl');
             return $content;
         }
-        
+
 
         if ($_USERID && !$genericuser) {
             if (!Jojo::getFormData('shipping') || !Jojo::getFormData('billing')) {
@@ -213,11 +217,11 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
             call_user_func(array(Jojo_Cart_Class, 'setShippingRegion'), $shippingRegion);
 
             call_user_func(array(Jojo_Cart_Class, 'saveCart'));
-  
- 
+
+
             Jojo::redirect(_SECUREURL . '/cart/shipping/');
-            
- 
+
+
         } else {
             /* Get form values */
             $fields = array('billing_firstname', 'billing_lastname',
@@ -233,7 +237,7 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
                 $cart->fields[$name] = Jojo::getFormData($name, false);
             }
             call_user_func(array(Jojo_Cart_Class, 'saveCart'));
-    
+
             /* Check for required fields */
             $requiredFields = array(
                 'billing_firstname' => 'Please enter your first name.',
@@ -253,7 +257,7 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
                 if ($cart->fields['shipping_freight_method'] == 'forwarding') {
                     $requiredFields['shipping_freight_company'] = 'Please enter the name of your freight forwarder.';
                 }
-    
+
             $errors = array();
             foreach($requiredFields as $name => $errorMsg) {
                 if (!$cart->fields[$name]) {
@@ -317,11 +321,11 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
 
 /* empty and refill the cart on user login to update pricing */
     static function action_after_login()
-    {    
+    {
         $cart = call_user_func(array(Jojo_Cart_Class, 'getCart'));
-        $products = $cart->items;        
+        $products = $cart->items;
         unset($cart->items);
-        
+
         foreach($products as $i => $p) {
             $code = $p['id'];
             $quantity = $p['quantity'];
@@ -333,7 +337,7 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
 
 /* empty the cart on user logout */
     static function action_after_logout()
-    {    
+    {
         call_user_func(array(Jojo_Cart_Class, 'emptyCart'));
         $_SESSION['loggingout'] = false;
         return true;

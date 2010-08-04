@@ -74,6 +74,9 @@ class jojo_plugin_jojo_cart_checkout_userbased_edit extends JOJO_Plugin
                 $errors[] = 'Please enter a valid email address.';
             }
 
+            $name= $new['firstname'].' '.$new['lastname'];
+            if(strlen($name)>35) $errors[] = 'Please a firstname/lastname combination with max 35 characters please';
+
             if (count($errors)) {
                 global $smarty;
                 $smarty->assign('errors', $errors);
