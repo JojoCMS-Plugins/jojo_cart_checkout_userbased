@@ -229,10 +229,11 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
                 'billing_suburb', 'billing_city', 'billing_state',
                 'billing_postcode', 'billing_country', 'shipping_firstname',
                 'shipping_lastname', 'shipping_email', 'shipping_address1',
+                'shipping_company', 'billing_company',
                 'shipping_address2', 'shipping_suburb', 'shipping_city',
                 'shipping_state', 'shipping_postcode', 'shipping_country',
                 'shipping_freight_method', 'shipping_freight_company',
-                    'shipping_freight_accountno', 'shipping_freight_ordernumber');
+                'shipping_freight_accountno', 'shipping_freight_ordernumber');
             foreach($fields as $name) {
                 $cart->fields[$name] = Jojo::getFormData($name, false);
             }
