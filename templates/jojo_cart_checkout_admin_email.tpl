@@ -10,7 +10,9 @@ Shipping Address
 {if $fields.shipping_city}  {$fields.shipping_city}{/if}
 {if $fields.shipping_state}  {$fields.shipping_state}{/if}
 {if $fields.shipping_postcode}  {$fields.shipping_postcode}{/if}
-{foreach from=$countries item=country}{if $country.code|strtoupper==$fields.shipping_country} {$country.name}{/if}{/foreach}
+{foreach from=$countries item=country}{if $country.code|strtoupper==$fields.shipping_country}  {$country.name}{/if}{/foreach}
+{if $fields.shipping_phone}  {$fields.shipping_phone}{/if}
+{if $fields.shipping_email}  {$fields.shipping_email}{/if}
 
 {if $fields.shipping_freight_method == 'forwarding'}
 Using {$fields.shipping_freight_company} for freight forwarding
@@ -29,8 +31,7 @@ Billing Address
 {if $fields.billing_city}  {$fields.billing_city}{/if}
 {if $fields.billing_state}  {$fields.billing_state}{/if}
 {if $fields.billing_postcode}  {$fields.billing_postcode}{/if}
-{foreach from=$countries item=country}{if $country.code|strtoupper==$fields.billing_country} {$country.name}{/if}{/foreach}
-
-
-
+{foreach from=$countries item=country}{if $country.code|strtoupper==$fields.billing_country}  {$country.name}{/if}{/foreach}
+{if $fields.billing_phone}  {$fields.billing_phone}{/if}
+{if $fields.billing_email}  {$fields.billing_email}{/if}
 

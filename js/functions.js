@@ -124,5 +124,6 @@ function copyShippingToBilling() {
     $('#billing_state').val($('#shipping_state').val());
     $('#billing_postcode').val($('#shipping_postcode').val());
     $('#billing_country').val($('#shipping_country').val());
+    $('#billing_phone').val($('#shipping_phone').val());
     updateCountry($('#billing_country').val(), 'billing');
 }

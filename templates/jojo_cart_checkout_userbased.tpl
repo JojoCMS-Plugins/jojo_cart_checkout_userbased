@@ -103,6 +103,10 @@
                 <input type="text" size="30" name="new[email]" maxlength="85" id="new_email" value="{if $fields.new_email}{$fields.new_email}{/if}" /> *<br />
     {if $errors.new_email}<span class="error">{$errors.new_email}</span><br/>{/if}
 
+                <label for="new_phone">Phone Number</label>
+                <input type="text" size="30" name="new[phone]" maxlength="85" id="new_phone" value="{if $fields.new_phone}{$fields.new_phone}{/if}" /><br />
+    {if $errors.new_phone}<span class="error">{$errors.new_phone}</span><br/>{/if}
+
                 <label for="new_country">Country</label>
                 <select size="1" name="new[country]" id="new_country" onchange="updateCountry($(this).val(), 'new');">
                 {assign var=found value=false}{foreach from=$countries item=country}
@@ -211,6 +215,10 @@
                 <input type="text" size="30" name="shipping_email" maxlength="85" id="shipping_email" value="{if $fields.shipping_email}{$fields.shipping_email}{/if}" /> *<br />
     {if $errors.shipping_email}<span class="error">{$errors.shipping_email}</span><br/>{/if}
 
+                <label for="shipping_phone">Phone Number</label>
+                <input type="text" size="30" name="shipping_phone" maxlength="85" id="shipping_phone" value="{if $fields.shipping_phone}{$fields.shipping_phone}{/if}" /><br />
+    {if $errors.shipping_phone}<span class="error">{$errors.shipping_phone}</span><br/>{/if}
+
                 <label for="shipping_country">Country</label>
                 <select size="1" name="shipping_country" id="shipping_country" onchange="updateCountry($(this).val(), 'shipping');">
     {assign var=found value=false}{foreach from=$countries item=country}
@@ -297,6 +305,10 @@
                 <label for="billing_email">Email</label>
                 <input type="text" size="30" name="billing_email" maxlength="85" id="billing_email" value="{if $fields.billing_email}{$fields.billing_email}{/if}" /> *<br />
     {if $errors.billing_email}<span class="error">{$errors.billing_email}</span><br/>{/if}
+
+                <label for="billing_phone">Phone Number</label>
+                <input type="text" size="30" name="billing_phone" maxlength="85" id="billing_phone" value="{if $fields.billing_phone}{$fields.billing_phone}{/if}" /><br />
+    {if $errors.billing_phone}<span class="error">{$errors.billing_phone}</span><br/>{/if}
 
                 <label for="billing_country">Country</label>
                 <select size="1" name="billing_country" id="billing_country" onchange="updateCountry($(this).val(), 'billing');">
