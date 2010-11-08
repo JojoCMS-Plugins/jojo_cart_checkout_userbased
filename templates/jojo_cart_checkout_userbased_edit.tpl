@@ -38,7 +38,7 @@
     {if $errors.new_email}<span class="error">{$errors.new_email}</span><br/>{/if}
 
                 <label for="new_email">Phone Number</label>
-                <input type="text" size="30" name="new[phone]" id="new_phone" value="{$fields.phone}" /> *<br />
+                <input type="text" size="30" name="new[phone]" id="new_phone" value="{$fields.phone}" /><br />
     {if $errors.new_phone}<span class="error">{$errors.new_phone}</span><br/>{/if}
 
                 <label for="new_country">Country</label>

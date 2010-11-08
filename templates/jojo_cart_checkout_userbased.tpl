@@ -36,7 +36,8 @@
                         {if $address.suburb}{$address.suburb}<br/>{/if}
                         {if $address.city}{$address.city}<br/>{/if}
                         {if $address.state}{$address.state}{/if} {$address.postcode}<br/>
-                        {foreach from=$countries item=country}{if !$found && $country.code|strtoupper==$address.country && $country.special==1}{$country.name}{/if}{/foreach}</br>
+                        {foreach from=$countries item=country}{if !$found && $country.code|strtoupper==$address.country && $country.special==1}{$country.name}<br />{/if}{/foreach}
+                        {if $address.phone}{$address.phone}<br />{/if}
     {if $address.freight_method == 'forwarding'}
                         <em>Using {$address.freight_company} for freight forwarding</em><br/>
     {/if}
@@ -64,7 +65,8 @@
                         {if $address.suburb}{$address.suburb}<br/>{/if}
                         {if $address.city}{$address.city}<br/>{/if}
                         {if $address.state}{$address.state}{/if} {$address.postcode}<br/>
-                        {section name=c loop=$countries}{if !$found && $countries[c].code|strtoupper==$address.country && $countries[c].special==1 }{$countries[c].name}{/if}{/section}</br>
+                        {section name=c loop=$countries}{if !$found && $countries[c].code|strtoupper==$address.country && $countries[c].special==1 }{$countries[c].name}<br />{/if}{/section}
+                        {if $address.phone}{$address.phone}<br />{/if}
                         <a class="addressbuttons cart-button" style="float:right" href="cart/checkout/edit/{$id}">Edit</a>
                     </label>
                 </p>

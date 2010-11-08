@@ -225,10 +225,10 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
         } else {
             /* Get form values */
             $fields = array('billing_firstname', 'billing_lastname',
-                'billing_email', 'billing_address1', 'billing_address2',
+                'billing_email', 'billing_phone', 'billing_address1', 'billing_address2',
                 'billing_suburb', 'billing_city', 'billing_state',
                 'billing_postcode', 'billing_country', 'shipping_firstname',
-                'shipping_lastname', 'shipping_email', 'shipping_address1',
+                'shipping_lastname', 'shipping_email', 'shipping_phone', 'shipping_address1',
                 'shipping_company', 'billing_company',
                 'shipping_address2', 'shipping_suburb', 'shipping_city',
                 'shipping_state', 'shipping_postcode', 'shipping_country',
@@ -250,6 +250,7 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
                 'billing_country' => 'Please select your country.',
                 'shipping_firstname' => 'Please enter your first name.',
                 'shipping_lastname' => 'Please enter your last name.',
+                'shipping_email' => 'Please enter your email address.',
                 'shipping_address1' => 'Please enter your shipping address.',
                 'shipping_city' => 'Please enter your shipping city.',
                 'shipping_postcode' => 'Please enter your post code.',
