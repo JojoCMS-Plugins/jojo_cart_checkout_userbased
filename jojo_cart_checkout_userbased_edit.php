@@ -85,7 +85,6 @@ class jojo_plugin_jojo_cart_checkout_userbased_edit extends JOJO_Plugin
                 $smarty->assign('countries', $countries);
 
                 $content = array();
-                $content['title']      = 'Shipping and Billing Information';
                 $content['content']    = $smarty->fetch('jojo_cart_checkout_userbased_edit.tpl');
                 return $content;
             }
@@ -99,7 +98,6 @@ class jojo_plugin_jojo_cart_checkout_userbased_edit extends JOJO_Plugin
         $smarty->assign('fields', $addressBook[$id]);
         $smarty->assign('countries', $countries);
         $content = array();
-        $content['title']      = 'Shipping and Billing Information';
         $content['content']    = $smarty->fetch('jojo_cart_checkout_userbased_edit.tpl');
         return $content;
     }

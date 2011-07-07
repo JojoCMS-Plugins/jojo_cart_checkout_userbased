@@ -159,8 +159,6 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
                 $content = array();
                 $smarty->assign('fields', $cart->fields);
                 $smarty->assign('addressbook', self::getAddressBook());
-                $content['title']      = 'Shipping and Billing Information';
-                $content['seotitle']   = 'Shipping and Billing Information';
                 $content['content']    = $smarty->fetch('jojo_cart_checkout_userbased.tpl');
                 return $content;
             }
@@ -185,8 +183,6 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
             $content = array();
             $smarty->assign('addressbook', self::getAddressBook());
             $smarty->assign('fields', $cart->fields);
-            $content['title']      = 'Shipping and Billing Information';
-            $content['seotitle']   = 'Shipping and Billing Information';
             $content['content']    = $smarty->fetch('jojo_cart_checkout_userbased.tpl');
             return $content;
         }
@@ -197,8 +193,6 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
                 $content = array();
                 $smarty->assign('errors', array('Select a Billing and Shipping Address'));
                 $smarty->assign('addressbook', self::getAddressBook());
-                $content['title']      = 'Shipping and Billing Information';
-                $content['seotitle']   = 'Shipping and Billing Information';
                 $content['content']    = $smarty->fetch('jojo_cart_checkout_userbased.tpl');
                 return $content;
             }
@@ -279,8 +273,6 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
                 $smarty->assign('errors', $errors);
                 $content = array();
                 $smarty->assign('fields', $cart->fields);
-                $content['title']      = 'Shipping and Billing Information';
-                $content['seotitle']   = 'Shipping and Billing Information';
                 $content['content']    = $smarty->fetch('jojo_cart_checkout_userbased.tpl');
                 return $content;
             }
