@@ -20,7 +20,7 @@ $default_fd['user']['checkout_addressbook'] = array(
         'fd_name' => "Checkout Addressbook",
         'fd_type' => "hidden",
         'fd_order' => "100",
-        'fd_tabname' => "Details",
+        'fd_tabname' => "Base",
     );
 
 
@@ -30,6 +30,6 @@ $default_fd['user']['generic'] = array(
         'fd_type' => "radio",
         'fd_default' => "no",
         'fd_order' => "100",
-        'fd_tabname' => "Details",
+        'fd_tabname' => "Base",
     );
 
