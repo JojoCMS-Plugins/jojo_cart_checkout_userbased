@@ -1,5 +1,5 @@
-<h2>##Customer Details##</h2>
 <div id ="cart-customerdetails">
+    <h2>##Customer Details##</h2>
     <div style="float: left; width: 50%; clear: left;">
         <strong>##Shipping Address##</strong><br/>
         {$fields.shipping_firstname} {$fields.shipping_lastname}<br />
@@ -27,5 +27,5 @@
         {if $fields.billing_email}{$fields.billing_email}<br/>{/if}
     </div>
     <div style="clear: both;"></div>
+    <p><a class="btn btn-small" href="cart/checkout">##Change Shipping / Billing details##</a></p>
 </div>
-<p><a class="cart-button button btn btn-small" href="cart/checkout">##Change Shipping / Billing details##</a></p>
