@@ -279,15 +279,15 @@
                 <p id="new_freightforwarding" {if $fields.new_freight_method != 'forwarding'}style="display:none"{/if}>
                     <label for="new_freight_company">Freight Company</label>
                     <input type="text" size="20" name="new[freight_company]" id="new_freight_company" value="{if isset($fields.new_freight_company)}{$fields.new_freight_company}{elseif $loggedIn}{$userrecord.us_firstname}{/if}" /><br />
-    {if $errors.new_freight_company}<span class="error">{$errors.new_freight_company}</span><br/>{/if}
+                    {if $errors.new_freight_company}<span class="error">{$errors.new_freight_company}</span><br/>{/if}
 
                     <label for="new_freight_accountno">Account Number</label>
                     <input type="text" size="20" name="new[freight_accountno]" id="new_freight_accountno" value="{if $fields.new_freight_accountno}{$fields.new_freight_accountno}{/if}" /><br />
-    {if $errors.new_freight_accountno}<span class="error">{$errors.new_freight_accountno}</span><br/>{/if}
+                    {if $errors.new_freight_accountno}<span class="error">{$errors.new_freight_accountno}</span><br/>{/if}
 
                     <label for="new_freight_ordernumber">Order Number</label>
                     <input type="text" size="20" name="new[freight_ordernumber]" id="new_freight_ordernumber" value="{if $fields.new_freight_ordernumber}{$fields.new_freight_ordernumber}{/if}" /><br />
-    {if $errors.new_freight_ordernumber}<span class="error">{$errors.new_freight_ordernumber}</span><br/>{/if}
+                    {if $errors.new_freight_ordernumber}<span class="error">{$errors.new_freight_ordernumber}</span><br/>{/if}
                 </p>
              {/if}
           {/foreach}
@@ -363,9 +363,10 @@
         </fieldset>
 
     {jojoHook hook="jojo_cart_extra_fields"}
+            <div class="control-group">
+                <label for="continue" class="control-label">&nbsp;</label>
+                <input type="submit" class="btn btn-primary" name="continue" value="Continue"/>
             </div>
-            <div class="clearfix"></div>
-            <input type="submit" class="btn btn-primary" name="continue" value="Continue"/>
     </form>
     </div>
 
