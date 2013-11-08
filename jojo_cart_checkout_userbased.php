@@ -108,9 +108,12 @@ class jojo_plugin_jojo_cart_checkout_userbased extends JOJO_Plugin
 
          /* Check for generic login account (doesn't get an addressbook)*/
         if ($_USERID) {
-            $user = Jojo::SelectRow("SELECT generic FROM {user} WHERE userid =?", array($_USERID));
+            $user = Jojo::SelectRow("SELECT * FROM {user} WHERE userid =?", array($_USERID));
             $genericuser = ($user['generic']=='yes') ? true : false;
             $smarty->assign('genericuser', $genericuser);
+            if (!$genericuser) {
+                $smarty->assign('user', $user);
+            }
         }
 
       /* get available freight types (specified in options)*/

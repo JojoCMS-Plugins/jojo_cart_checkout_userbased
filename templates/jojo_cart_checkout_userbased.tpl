@@ -85,60 +85,60 @@
     {/if}
 
         <div id="newaddress" style="clear:left; {if count($addressbook)}display: none;{/if}">
-            <form method="post" action="cart/checkout/">
+            <form method="post" action="cart/checkout/" class="horizontal-form">
                 <h3>Add Address</h3>
 
                 <p>
                 <label for="new_firstname">First name</label>
-                <input type="text" size="20" name="new[firstname]" maxlength="20" id="new_firstname" value="{if $fields.new_firstname}{$fields.new_firstname}{/if}" /> *<br />
+                <input type="text" size="20" name="new[firstname]" maxlength="20" id="new_firstname" value="{if $fields.new_firstname}{$fields.new_firstname}{elseif $user.us_firstname}{$user.us_firstname}{/if}" /> *<br />
     {if $errors.new_firstname}<span class="error">{$errors.new_firstname}</span><br/>{/if}
 
                 <label for="new_lastname">Last name</label>
-                <input type="text" size="20" name="new[lastname]" maxlength="20" id="new_lastname" value="{if $fields.new_lastname}{$fields.new_lastname}{/if}" /> *<br />
+                <input type="text" size="20" name="new[lastname]" maxlength="20" id="new_lastname" value="{if $fields.new_lastname}{$fields.new_lastname}{elseif $user.us_lastname}{$user.us_lastname}{/if}" /> *<br />
     {if $errors.new_lastname}<span class="error">{$errors.new_lastname}</span><br/>{/if}
 
                 <label for="new_company">Company Name</label>
-                <input type="text" size="30" name="new[company]" maxlength="35" id="new_company" value="{if $fields.new_company}{$fields.new_company}{/if}" /><br />
+                <input type="text" size="30" name="new[company]" maxlength="35" id="new_company" value="{if $fields.new_company}{$fields.new_company}{elseif $user.us_company}{$user.us_company}{/if}" /><br />
     {if $errors.new_company}<span class="error">{$errors.new_company}</span><br/>{/if}
 
                 <label for="new_email">Email</label>
-                <input type="text" size="30" name="new[email]" maxlength="85" id="new_email" value="{if $fields.new_email}{$fields.new_email}{/if}" /> *<br />
+                <input type="text" size="30" name="new[email]" maxlength="85" id="new_email" value="{if $fields.new_email}{$fields.new_email}{elseif $user.us_email}{$user.us_email}{/if}" /> *<br />
     {if $errors.new_email}<span class="error">{$errors.new_email}</span><br/>{/if}
 
                 <label for="new_phone">Phone Number</label>
-                <input type="text" size="30" name="new[phone]" maxlength="85" id="new_phone" value="{if $fields.new_phone}{$fields.new_phone}{/if}" /><br />
+                <input type="text" size="30" name="new[phone]" maxlength="85" id="new_phone" value="{if $fields.new_phone}{$fields.new_phone}{elseif $user.us_phone}{$user.us_phone}{/if}" /><br />
     {if $errors.new_phone}<span class="error">{$errors.new_phone}</span><br/>{/if}
 
                 <label for="new_country">Country</label>
                 <select size="1" name="new[country]" id="new_country" onchange="updateCountry($(this).val(), 'new');">
                 {assign var=found value=false}{foreach from=$countries item=country}
-                    <option value="{$country.code|strtoupper}"{if !$found && $country.code|strtoupper==$fields.shipping_country} selected="selected"{assign var=found value=true}{/if}>{$country.name}</option>
+                    <option value="{$country.code|strtoupper}"{if !$found && ($country.code|strtoupper==$fields.shipping_country || $country.code|strtoupper==$user.us_country)} selected="selected"{assign var=found value=true}{/if}>{$country.name}</option>
                 {/foreach}
                 </select> *<br />
     {if $errors.new_country}<span class="error">{$errors.new_country}</span><br/>{/if}
 
                 <label for="new_state">State</label>
-                <input type="text" size="20" name="new[state]" maxlength="35" id="new_state" value="{if $fields.new_state}{$fields.new_state}{/if}" /><br />
+                <input type="text" size="20" name="new[state]" maxlength="35" id="new_state" value="{if $fields.new_state}{$fields.new_state}{elseif $user.us_state}{$user.us_state}{/if}" /><br />
     {if $errors.new_state}<span class="error">{$errors.new_state}</span><br/>{/if}
 
                 <label for="new_address1">Address 1</label>
-                <input type="text" size="30" name="new[address1]" maxlength="35" id="new_address1" value="{if $fields.new_address1}{$fields.new_address1}{/if}" /> *<br />
+                <input type="text" size="30" name="new[address1]" maxlength="35" id="new_address1" value="{if $fields.new_address1}{$fields.new_address1}{elseif $user.us_address1}{$user.us_address1}{/if}" /> *<br />
     {if $errors.new_address1}<span class="error">{$errors.new_address1}</span><br/>{/if}
 
                 <label for="new_address2">Address 2</label>
-                <input type="text" size="30" name="new[address2]" maxlength="35" id="new_address2" value="{if $fields.new_address2}{$fields.new_address2}{/if}" /><br />
+                <input type="text" size="30" name="new[address2]" maxlength="35" id="new_address2" value="{if $fields.new_address2}{$fields.new_address2}{elseif $user.us_address2}{$user.us_address2}{/if}" /><br />
     {if $errors.new_address2}<span class="error">{$errors.new_address2}</span><br/>{/if}
 
                 <label for="new_suburb">Suburb</label>
-                <input type="text" size="20" name="new[suburb]" maxlength="35" id="new_suburb" value="{if $fields.new_suburb}{$fields.new_suburb}{/if}" /><br />
+                <input type="text" size="20" name="new[suburb]" maxlength="35" id="new_suburb" value="{if $fields.new_suburb}{$fields.new_suburb}{elseif $user.us_suburb}{$user.us_suburb}{/if}" /><br />
     {if $errors.new_suburb}<span class="error">{$errors.new_suburb}</span><br/>{/if}
 
                 <label for="new_city">City</label>
-                <input type="text" size="20" name="new[city]" maxlength="35" id="new_city" value="{if $fields.new_city}{$fields.new_city}{/if}" /> *<br />
+                <input type="text" size="20" name="new[city]" maxlength="35" id="new_city" value="{if $fields.new_city}{$fields.new_city}{elseif $user.us_city}{$user.us_city}{/if}" /> *<br />
     {if $errors.new_city}<span class="error">{$errors.new_city}</span><br/>{/if}
 
                 <label for="new_postcode">Postcode</label>
-                <input type="text" size="10" name="new[postcode]" id="new_postcode" value="{if $fields.new_postcode}{$fields.new_postcode}{/if}" /> *<br />
+                <input type="text" size="10" name="new[postcode]" id="new_postcode" value="{if $fields.new_postcode}{$fields.new_postcode}{elseif $user.us_postcode}{$user.us_postcode}{/if}" /> *<br />
     {if $errors.new_postcode}<span class="error">{$errors.new_postcode}</span><br/>{/if}
 
                 </p>
