@@ -18,7 +18,7 @@ Jojo::addHook('action_after_logout', 'action_after_logout', 'jojo_cart_checkout_
 
 $_options[] = array(
     'id'          => 'freight_options',
-    'category'    => 'Cart',
+    'category'    => 'Cart - Shipping',
     'label'       => 'Freight Options',
     'description' => 'Freight options to display during checkout',
     'type'        => 'checkbox',
@@ -29,12 +29,22 @@ $_options[] = array(
 
 $_options[] = array(
     'id'          => 'freight_description',
-    'category'    => 'Cart',
+    'category'    => 'Cart - Shipping',
     'label'       => 'Freight Text',
-    'description' => 'A description to display when frieght is 0',
+    'description' => 'A description to display when freight is 0',
     'type'        => 'text',
     'default'     => 'Free',
     'options'     => '',
     'plugin'      => 'jojo_cart_checkout_userbased'
+);
+
+$_options[] = array(
+    'id'          => 'freight_favouritesonly',
+    'category'    => 'Cart - Shipping',
+    'label'       => 'Ship to \'favourite\' countries only',
+    'description' => 'Shipping destination form will only display countries ticked as favourite (shipping charges should still be set as NA for other regions for saved user addresses).',
+    'type'        => 'radio',
+    'default'     => 'no',
+    'options'     => 'yes,no'
 );
 

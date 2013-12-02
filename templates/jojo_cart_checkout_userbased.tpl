@@ -228,14 +228,17 @@
             <div class="form-fieldset control-group{if $errors.shipping_country} error{/if}">
                 <label for="shipping_country" class="control-label">Country<span class="required">*</span></label>
                 <select class="select required" name="shipping_country" id="shipping_country" onchange="updateCountry($(this).val(), 'shipping');">{assign var=found value=false}
-                    {foreach from=$countries item=country}<option value="{$country.code|strtoupper}"{if !$found && $country.code|strtoupper==$fields.shipping_country } selected="selected"{assign var=found value=true}{/if}>{$country.name}</option>
-                    {/foreach}
+                    {if $shippingcountries}{foreach from=$shippingcountries item=country}<option value="{$country.code|strtoupper}"{if !$found && $country.code|strtoupper==$fields.shipping_country } selected="selected"{assign var=found value=true}{/if}>{$country.name}</option>
+                    {/foreach}{else}{foreach from=$countries item=country}<option value="{$country.code|strtoupper}"{if !$found && $country.code|strtoupper==$fields.shipping_country } selected="selected"{assign var=found value=true}{/if}>{$country.name}</option>
+                    {/foreach}{/if}
                 </select>
             </div>
 
-             <div class="form-fieldset control-group{if $errors.shipping_state} error{/if}">
-               <label for="shipping_state" class="control-label">State</label>
+             <div class="form-fieldset control-group{if $errors.shipping_state} error{/if}{if $shippingnostates} hidden{/if}">
+                {if $shippingnostates}<input type="hidden" name="shipping_state" id="shipping_state" value="" />
+                {else}<label for="shipping_state" class="control-label">State</label>
                 <input type="text" name="shipping_state" id="shipping_state" value="{if $fields.shipping_state}{$fields.shipping_state}{/if}" />
+                {/if}
             </div>
 
             <div class="form-fieldset control-group{if $errors.shipping_address1} error{/if}">
