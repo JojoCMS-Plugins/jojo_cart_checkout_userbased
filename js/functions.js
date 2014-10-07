@@ -25,6 +25,7 @@ function updateCountryCities(country, section) {
                 $(textbox).prop('type', 'text');
                $(textbox).attr('id', target.attr('id'));
                 $(textbox).attr('name', target.attr('name'));
+                $(textbox).addClass('form-control input text');
                 if (target.val()) {
                     $(textbox).val(target.val());
                 }
@@ -33,6 +34,7 @@ function updateCountryCities(country, section) {
                 var selectbox = document.createElement('select');
                 $(selectbox).attr('id', target.attr('id'));
                 $(selectbox).attr('name', target.attr('name'));
+                $(selectbox).addClass('form-control select');
                 option = new Option('', '');
                 selectbox.options.add(option);
                 for (i = 0; i < data.length; i++) {
@@ -58,6 +60,7 @@ function updateStateCities(country, state, section) {
                 $(textbox).prop('type', 'text');
                 $(textbox).attr('id', target.attr('id'));
                 $(textbox).attr('name', target.attr('name'));
+                $(textbox).addClass('form-control input text');
                 if (target.val()) {
                     $(textbox).val(target.val());
                 }
@@ -66,6 +69,7 @@ function updateStateCities(country, state, section) {
                 var selectbox = document.createElement('select');
                 $(selectbox).attr('id', target.attr('id'));
                 $(selectbox).attr('name', target.attr('name'));
+                $(selectbox).addClass('form-control select');
                 option = new Option('', '');
                 selectbox.options.add(option);
                 for (i = 0; i < data.length; i++) {
@@ -88,6 +92,7 @@ function updateCountryStates(country, section) {
                 $(textbox).prop('type', 'text');
                $(textbox).attr('id', target.attr('id'));
                 $(textbox).attr('name', target.attr('name'));
+                $(textbox).addClass('form-control input text');
                 if (target[0].tagName == 'INPUT' && target.val()) {
                     $(textbox).val(target.val());
                 }
@@ -96,6 +101,7 @@ function updateCountryStates(country, section) {
                 var selectbox = document.createElement('select');
                 $(selectbox).attr('id', target.attr('id'));
                 $(selectbox).attr('name', target.attr('name'));
+                $(selectbox).addClass('form-control select');
                 option = new Option('', '');
                 selectbox.options.add(option);
                 for (i = 0; i < data.length; i++) {
@@ -115,6 +121,7 @@ function updateCountryStates(country, section) {
             $(textbox).prop('type', 'text');
             $(textbox).attr('id', target.attr('id'));
             $(textbox).attr('name', target.attr('name'));
+            $(textbox).addClass('form-control input text');
             if (target.val()) {
                 $(textbox).val(target.val());
             }
