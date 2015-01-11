@@ -2,7 +2,7 @@ function updateCountry(country, section) {
     if (!country) {
         return;
     }
-    $.getJSON(siteurl + '/json/jojo_cart_country_hasstates.php', {c: country}, function(data) {
+    $.getJSON(secureurl + '/json/jojo_cart_country_hasstates.php', {c: country}, function(data) {
             if (data) {
                 $('#' + section + '_state').removeAttr('disabled');
                 updateCountryStates(country, section);
@@ -18,7 +18,7 @@ function updateCountry(country, section) {
 }
 
 function updateCountryCities(country, section) {
-    $.getJSON(siteurl + '/json/jojo_cart_country_cities.php', {c: country}, function(data) {
+    $.getJSON(secureurl + '/json/jojo_cart_country_cities.php', {c: country}, function(data) {
             target = $('#' + section + '_city');
             if (!data.length) {
                 var textbox = document.createElement('input');
@@ -53,7 +53,7 @@ function updateStateCities(country, state, section) {
     if (!country || !state) {
         return;
     }
-    $.getJSON(siteurl + '/json/jojo_cart_state_cities.php', {c: country, s: state}, function(data) {
+    $.getJSON(secureurl + '/json/jojo_cart_state_cities.php', {c: country, s: state}, function(data) {
             target = $('#' + section + '_city');
             if (!data.length) {
                 var textbox = document.createElement('input');
@@ -85,7 +85,7 @@ function updateStateCities(country, state, section) {
 }
 
 function updateCountryStates(country, section) {
-    $.getJSON(siteurl + '/json/jojo_cart_country_states.php', {c: country}, function(data) {
+    $.getJSON(secureurl + '/json/jojo_cart_country_states.php', {c: country}, function(data) {
             target = $('#' + section + '_state');
             if (!data.length) {
                 var textbox = document.createElement('input');
