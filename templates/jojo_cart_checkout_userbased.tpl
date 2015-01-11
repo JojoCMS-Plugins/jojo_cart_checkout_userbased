@@ -206,8 +206,7 @@
             </ul>
         </div>
     {/if}
-
-    <form id="customer-details" method="post" action="cart/checkout/" class="contact-form no-ajax form-horizontal"  role="form">
+    <form id="customer-details" method="post" action="cart/checkout/" class="contact-form no-ajax"  role="form">
         <fieldset id="shipping-details">
             <legend>Shipping Address</legend>
  
