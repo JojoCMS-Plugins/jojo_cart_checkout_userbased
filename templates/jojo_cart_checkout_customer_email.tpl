@@ -1,5 +1,5 @@
 ###Customer Details
-**Shipping Address**
+**Shipping Address**  
 {$fields.shipping_firstname} {$fields.shipping_lastname}  
 {if $fields.shipping_phone}  {$fields.shipping_phone}  
 {/if}{if $fields.shipping_company}  {$fields.shipping_company}  
@@ -18,7 +18,7 @@ Account Number: {$fields.shipping_freight_accountno}
 Order Number: {$fields.shipping_freight_ordernumber}  
 {else}Using standard shipping  
 {/if}
-**Billing Address**
+**Billing Address**  
 {$fields.billing_firstname} {$fields.billing_lastname}  
 {if $fields.billing_email}{$fields.billing_email}  
 {/if}{if $fields.billing_phone}Ph: {$fields.billing_phone}  
