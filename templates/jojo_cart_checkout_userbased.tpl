@@ -383,11 +383,5 @@
     </form>
     </div>
 
-
-    <script type='text/javascript'>{literal}
-        updateCountry($('#billing_country').val(),  'billing');
-        updateCountry($('#shipping_country').val(), 'shipping');
-        updateCountry($('#new_country').val(), 'new');
-    {/literal}</script>
 {/if}
 {/if}
