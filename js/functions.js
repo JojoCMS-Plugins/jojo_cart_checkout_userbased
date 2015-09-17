@@ -1,3 +1,19 @@
+$(document).ready(function(){
+    if ($('#billing_country').val()) {
+        updateCountry($('#billing_country').val(),  'billing');
+    }
+    if ($('#shipping_country').val()) {
+        updateCountry($('#shipping_country').val(), 'shipping');
+    }
+    $('#billing_country').change(function(){
+        updateCountry($(this).val(),  'billing');
+    });
+    $('#shipping_country').change(function(){
+        updateCountry($(this).val(),  'shipping');
+    });
+
+});
+
 function updateCountry(country, section) {
     if (!country) {
         return;
@@ -8,12 +24,8 @@ function updateCountry(country, section) {
                 updateCountryStates(country, section);
             } else {
                 $('#' + section + '_state').attr('disabled', 'disabled');
-                $.getJSON(siteurl + '/json/jojo_cart_country_hascities.php', {c: country}, function(data) {
-                   if (data) {
-                        updateCountryCities(country, section);
-                    }
-                });
             }
+            updateCountryCities(country, section);
     });
 }
 

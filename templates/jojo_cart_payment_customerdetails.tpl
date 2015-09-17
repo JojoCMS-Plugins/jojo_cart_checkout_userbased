@@ -1,5 +1,5 @@
 <div id ="cart-customerdetails">
-    <h2>##Customer Details## <a class="btn btn-default btn-sm pull-right" href="cart/checkout">##Change Shipping / Billing details##</a></h2>
+    <h2>##Customer Details## <a class="btn btn-default btn-xs" href="cart/checkout">##Change Shipping or Billing details?##</a></h2>
     <div class="row">
         <div class="col-sm-6">
             <h5>##Shipping Address##</h5>

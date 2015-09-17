@@ -237,7 +237,7 @@
 
             <div class="form-fieldset form-group{if $errors.shipping_country} error{/if}">
                 <label for="shipping_country" class="control-label">Country<span class="required">*</span></label>
-                <select class="form-control select required" name="shipping_country" id="shipping_country" onchange="updateCountry($(this).val(), 'shipping');">{assign var=found value=false}
+                <select class="form-control select required" name="shipping_country" id="shipping_country">{assign var=found value=false}
                     {if $shippingcountries}{foreach from=$shippingcountries item=country}<option value="{$country.code|strtoupper}"{if !$found && $country.code|strtoupper==$fields.shipping_country } selected="selected"{assign var=found value=true}{/if}>{$country.name}</option>
                     {/foreach}{else}{foreach from=$countries item=country}<option value="{$country.code|strtoupper}"{if !$found && $country.code|strtoupper==$fields.shipping_country } selected="selected"{assign var=found value=true}{/if}>{$country.name}</option>
                     {/foreach}{/if}
@@ -337,7 +337,7 @@
 
             <div class="form-fieldset form-group{if $errors.billing_country} error{/if}">
                 <label for="billing_country" class="control-label">Country<span class="required">*</span></label>
-                <select class="form-control select required" name="billing_country" id="billing_country" onchange="updateCountry($(this).val(), 'billing');">{assign var=found value=false}
+                <select class="form-control select required" name="billing_country" id="billing_country">{assign var=found value=false}
                     {foreach from=$countries item=country}<option value="{$country.code|strtoupper}"{if !$found && $country.code|strtoupper==$fields.billing_country } selected="selected"{assign var=found value=true}{/if}>{$country.name}</option>
                     {/foreach}
                 </select>

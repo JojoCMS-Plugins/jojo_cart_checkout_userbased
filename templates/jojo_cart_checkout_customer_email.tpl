@@ -1,7 +1,7 @@
 ###Customer Details
 **Shipping Address**  
 {$fields.shipping_firstname} {$fields.shipping_lastname}  
-{if $fields.shipping_phone}  {$fields.shipping_phone}  
+{if $fields.shipping_phone}Phone:  {$fields.shipping_phone}  
 {/if}{if $fields.shipping_company}  {$fields.shipping_company}  
 {/if}{if $fields.shipping_address1}  {$fields.shipping_address1}  
 {/if}{if $fields.shipping_address2}  {$fields.shipping_address2}  
@@ -20,8 +20,8 @@ Order Number: {$fields.shipping_freight_ordernumber}
 {/if}
 **Billing Address**  
 {$fields.billing_firstname} {$fields.billing_lastname}  
-{if $fields.billing_email}{$fields.billing_email}  
-{/if}{if $fields.billing_phone}Ph: {$fields.billing_phone}  
+{if $fields.billing_email}Email: {$fields.billing_email}  
+{/if}{if $fields.billing_phone}Phone: {$fields.billing_phone}  
 {/if}{if $fields.billing_company}  {$fields.billing_company}  
 {/if}{if $fields.billing_address1}  {$fields.billing_address1}  
 {/if}{if $fields.billing_address2}  {$fields.billing_address2}  
